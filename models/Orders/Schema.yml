@@ -1,0 +1,10 @@
+
+models:
+    - name: Orders
+      description: "this is orders model"
+      columns:
+          - name: order_id
+            description: "The primary key for this table"
+            tests:
+                - unique
+                - not_null
