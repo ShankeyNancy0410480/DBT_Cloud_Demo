@@ -5,7 +5,7 @@
 WITH source AS (
     -- Pull raw data from your source definition
     SELECT * 
-    FROM DBT_DEMO.ROW_SCHEMA.ORDERS 
+    FROM DBT_DEMO.ROW_SCHEMA.ORDER
 ),
 
 renamed AS (
