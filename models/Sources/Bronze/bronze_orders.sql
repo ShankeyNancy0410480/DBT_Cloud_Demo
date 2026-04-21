@@ -1,10 +1,16 @@
 {{ config(
     schema = "Bronze"
 ) }}
-{% set cols = ['ORDER_ID', 'CUSTOMER_ID', 'ORDER_DATE', 'ORDER_STATUS' , 'ORDER_TOTAL'] %}
+
+{% set cols = ['ORDER_ID', 'CUSTOMER_ID', 'ORDER_DATE', 'ORDER_STATUS', 'ORDER_TOTAL'] %}
 
 select
   {% for col in cols %}
     {{ col }}{% if not loop.last %}, {% endif %}
-  {% endfor %}  
+  {% endfor %}
+
+  {% if 'CUSTOMER_ID' in cols %}
+    , {{ echo_customer_id('CUSTOMER_ID', '_BronzCustomerOrder') }} as updated_customer_id
+  {% endif %}
+
 from {{ source('raw', 'ORDERS') }}
