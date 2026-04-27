@@ -1,8 +1,9 @@
 {{ config(
-    schema = "Bronze"
+    schema = "Bronze",
+    materialized = 'table'
 ) }}
 
-{% set cols = ['ORDER_ID', 'CUSTOMER_ID', 'ORDER_DATE', 'ORDER_STATUS', 'ORDER_TOTAL'] %}
+{% set cols = ['ORDER_ID', 'CUSTOMER_ID', 'ORDER_DATE', 'ORDER_STATUS', 'ORDER_TOTAL','UPDATED_AT'] %}
 
 select
   {% for col in cols %}
