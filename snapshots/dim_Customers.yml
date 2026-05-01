@@ -1,0 +1,11 @@
+snapshots:
+  - name: dim_Customers
+    relation: ref('Customer')
+    config:
+      schema: GOLD
+      database: DBT_DEMO
+      unique_key: CUSTOMER_ID
+      strategy: timestamp
+      updated_at: RECORD_UPDATED_AT
+      dbt_valid_to_current: "to_date('9999-12-31')"
+     
