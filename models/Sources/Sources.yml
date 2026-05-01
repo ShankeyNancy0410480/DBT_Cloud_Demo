@@ -7,3 +7,29 @@ sources:
     tables:
       - name: CUSTOMER
       - name: ORDERS
+
+  - name: gold
+    database: DBT_DEMO
+    schema: GOLD
+    tables:
+      - name: GOLD_ORDERS_OBT
+
+models:
+  - name: bronze_customers
+    description: "Bronze layer customer table"
+    columns:
+      - name: EMAIL
+        description: "Customer email address"
+        tests:
+          - not_null:
+              config:
+                severity: error
+          - is_valid_email:
+              config:
+                severity: error
+      - name: FIRST_NAME
+        description: "Customer First Name"
+        tests:
+          - not_null:
+              config:
+                severity: warn
